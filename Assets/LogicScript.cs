@@ -9,6 +9,7 @@ public class LogicScript : MonoBehaviour
     public int playerScore;
     public Text scoreText;
     public GameObject gameOverScreen;
+    public PipeSpawnScript pipeSpawnScript;
 
     [ContextMenu("Increase Score")]
     public void addScore (int scoreToAdd) 
@@ -25,6 +26,12 @@ public class LogicScript : MonoBehaviour
 
     public void GameOver()
     {
+        pipeSpawnScript.StopPiepes();
         gameOverScreen.SetActive(true);
+    }
+
+    public void CloseGame()
+    {
+        Application.Quit();
     }
 }

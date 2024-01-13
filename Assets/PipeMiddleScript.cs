@@ -5,16 +5,12 @@ using UnityEngine;
 public class PipeMiddleScript : MonoBehaviour
 {
     public LogicScript logic;
+    private AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
         logic = GameObject.FindGameObjectWithTag("GameController").GetComponent<LogicScript>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -22,6 +18,7 @@ public class PipeMiddleScript : MonoBehaviour
         if (collision.gameObject.layer == 3)
         {
             logic.addScore(1);
+            audioSource.Play();
         }
     }
 }

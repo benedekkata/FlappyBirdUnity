@@ -6,18 +6,18 @@ public class PipeScript : MonoBehaviour
 {
     public float moveSpeed = 1;
     public float deleteZone = -15;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
+    public bool isGameOver = false;
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += (Vector3.left * moveSpeed) * Time.deltaTime;
+        if (!isGameOver)
+        {
+            transform.position += (Vector3.left * moveSpeed) * Time.deltaTime;
+        }
 
-        if(transform.position.x < deleteZone)
+        if (transform.position.x < deleteZone)
         {
             Destroy(gameObject);
         }
